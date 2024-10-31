@@ -16,7 +16,7 @@ const App = () => {
   const fetchTodos = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/tarefas');
+      const response = await axios.get('https://sistema-lista-de-tarefas-backend.onrender.com/api/tarefas');
       setTodos(response.data);
     } catch (error) {
       console.error('Erro ao buscar tarefas:', error);
@@ -27,7 +27,7 @@ const App = () => {
 
   const addTodo = async (todo) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/tarefas', todo);
+      const response = await axios.post('https://sistema-lista-de-tarefas-backend.onrender.com/api/tarefas', todo);
       setTodos((prevTodos) => [...prevTodos, response.data]);
       setShowForm(false);
     } catch (error) {
@@ -37,7 +37,7 @@ const App = () => {
 
   const editTodo = async (id, updatedTodo) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/tarefas/${id}`, updatedTodo);
+      const response = await axios.put(`https://sistema-lista-de-tarefas-backend.onrender.com/api/tarefas/${id}`, updatedTodo);
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === id ? response.data : todo))
       );
@@ -50,7 +50,7 @@ const App = () => {
     if (!window.confirm('Tem certeza que deseja excluir esta tarefa?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/tarefas/${id}`);
+      await axios.delete(`https://sistema-lista-de-tarefas-backend.onrender.com/api/tarefas/${id}`);
       setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
     } catch (error) {
       alert('Erro ao excluir tarefa.');
@@ -73,7 +73,7 @@ const App = () => {
     }));
   
     try {
-      await axios.put('http://localhost:5000/api/tarefas/reorder', {
+      await axios.put('https://sistema-lista-de-tarefas-backend.onrender.com/api/tarefas/reorder', {
         reorderedTasks,
       });
       console.log('Ordem atualizada com sucesso');
