@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext} from 'react-beautiful-dnd';
 import TodoList from './components/TodoList';
 import AddTodoForm from './components/AddTodoForm';
 import axios from 'axios';
@@ -89,12 +89,10 @@ const App = () => {
         <AddTodoForm addTodo={addTodo} />
         {loading ? <p>Carregando...</p> : <TodoList todos={todos} editTodo={editTodo} deleteTodo={deleteTodo} />}
         
-        {/* Botão para mostrar/esconder o formulário */}
         <button onClick={() => setShowForm((prev) => !prev)}>
           {showForm ? 'Cancelar' : 'incluir nova Tarefa'}
         </button>
 
-         {/* Renderizando o segundo formulário condicionalmente  */}
         {showForm && <AddTodoForm addTodo={addTodo} />}
       </div>
     </DragDropContext>
