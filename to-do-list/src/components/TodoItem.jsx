@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 
-const TodoItem = ({ todo, deleteTodo }) => {
+const TodoItem = ({ todo, editTodo, deleteTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTodo, setUpdatedTodo] = useState({ name: todo.name, cost: todo.cost, dueDate: todo.dueDate});
+
+  const handleUpdate = () => {
+    if (!updatedTodo.name.trim()) {
+      alert('O nome da tarefa não pode estar vazio.');
+      return;
+    }
+    editTodo(todo.id, updatedTodo);
+    setIsEditing(false);
+  };
 
   
 
