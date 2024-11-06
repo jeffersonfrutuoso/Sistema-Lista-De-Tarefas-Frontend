@@ -22,7 +22,7 @@ const TodoItem = ({ todo, editTodo, deleteTodo }) => {
         <>
           <input
             type="text"
-            maxLength="5"
+            maxLength="100"
             value={updatedTodo.name}
             onChange={(e) => setUpdatedTodo({ ...updatedTodo, name: e.target.value })}
           />
