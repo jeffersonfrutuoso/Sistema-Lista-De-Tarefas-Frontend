@@ -59,13 +59,13 @@ const App = () => {
 
   const handleDragEnd = async (result) => {
     if (!result.destination) return;
-
+  
     const reorderedTodos = Array.from(todos);
     const [removed] = reorderedTodos.splice(result.source.index, 1);
     reorderedTodos.splice(result.destination.index, 0, removed);
-
+  
     setTodos(reorderedTodos);
-
+  
     
     const reorderedTasks = reorderedTodos.map((todo, index) => ({
       id: todo.id,
@@ -76,11 +76,12 @@ const App = () => {
       await axios.put('https://sistema-lista-de-tarefas-backend.onrender.com/api/tarefas/reorder', {
         reorderedTasks,
       });
-      console.log('Ordem atualizada com sucesso');
+      console.log('Ordem atualizada com sucesso no servidor');
     } catch (error) {
       console.error('Erro ao reordenar tarefas:', error);
     }
   };
+  
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
